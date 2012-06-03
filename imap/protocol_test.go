@@ -2,13 +2,13 @@ package imap
 
 import (
 	"bytes"
-	"testing"
 	"reflect"
+	"testing"
 )
 
 type readerTest struct {
-	input string
-	expectedTag tag
+	input            string
+	expectedTag      tag
 	expectedResponse interface{}
 }
 
@@ -24,7 +24,6 @@ func (rt readerTest) Run(t *testing.T) {
 	}
 }
 
-
 func TestProtocol(t *testing.T) {
 	tests := []readerTest{
 		readerTest{
@@ -32,7 +31,7 @@ func TestProtocol(t *testing.T) {
 			untagged,
 			&ResponseStatus{
 				status: OK,
-				text: "Gimap ready for requests from 12.34 u6if.369",
+				text:   "Gimap ready for requests from 12.34 u6if.369",
 			},
 		},
 		readerTest{
@@ -55,8 +54,8 @@ func TestProtocol(t *testing.T) {
 			tag(2),
 			&ResponseStatus{
 				status: OK,
-				code:"READ-ONLY",
-				text:"INBOX selected. (Success)",
+				code:   "READ-ONLY",
+				text:   "INBOX selected. (Success)",
 			},
 		},
 	}
